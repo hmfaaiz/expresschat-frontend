@@ -3,7 +3,7 @@ const initstate = {
   code:null,
   user:null,
   userList:null,
-  message:null,
+  messages:null,
   selectedChat:null,
   chat_id:null
 
@@ -19,8 +19,8 @@ export default function Reducer(state = initstate, action) {
     case "userList":
       return { ...state,userList: action.payload };
    
-    case "message":
-      return { ...state,message: action.payload };
+    case "messages":
+      return { ...state,messages: action.payload };
    
    
     case "selectedChat":

@@ -8,6 +8,12 @@ function Contactlistarea() {
   const [selectedUser, setSelectedUser] = useState("");
   const dispatch = useDispatch();
   const reduxData = useSelector((x) => x.data);
+  const [searchName, setSearchName] = useState("");
+  const [filterMember, setFilterMember] = useState();
+
+  useEffect(() => {
+    setFilterMember(reduxData?.userList);
+  }, [reduxData?.userList]);
 
   useEffect(() => {
     axios({
@@ -33,7 +39,14 @@ function Contactlistarea() {
   }, []);
 
 
- 
+  const Searching = (e) => {
+    setSearchName(e);
+    const filteredMembers = reduxData?.userList.filter((member) =>
+      member.name.toLowerCase().includes(e.toLowerCase())
+    );
+    setFilterMember(filteredMembers);
+
+  };
 
   return (
     <>
@@ -48,13 +61,16 @@ function Contactlistarea() {
             />
             <input
               className="w-full  bg-gray-100 focus:outline-none "
-              placeholder="Enter your text..."
+              placeholder="Search name..."
+              value={searchName}
+              onChange={(e) => Searching(e.target.value)}
+             
             />
           </div>
         </div>
         {/* contact list  */}
         <div className="overflow-auto h-[77%]">
-          {reduxData?.userList?.map(
+          {filterMember?.map(
             (data, i) =>
               reduxData?.user?.profile_id?._id != data._id && (
                 <div

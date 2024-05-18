@@ -1,9 +1,8 @@
-
 import { Inter } from "next/font/google";
 import "./globals.css";
-import  Providers  from "../redux/Provider";
+import Providers from "../redux/Provider";
 import store from "../redux/Store";
-
+import Socket from "../socket/socket";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,12 +12,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-  
     <html lang="en">
-       
-      <body className={inter.className}>  <Providers store={store}>{children}</Providers></body>
-
+      <body className={inter.className}>
+ 
+        <Providers store={store}>
+          <Socket>{children}</Socket>
+        </Providers>
+      </body>
     </html>
-   
   );
 }

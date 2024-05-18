@@ -12,14 +12,16 @@ function Chatarea() {
   const [messages, setMessages] = useState([]);
   const [typedMessage,setTypedMessage]=useState("")
   const { socket } = useSocket();
-  console.log("conversation:${reduxData.chat_id}",reduxData)
+
+
   useEffect(() => {
-    if (reduxData?.user_id && socket) {
+ 
+    if (reduxData?.chat_id && socket) {
+
       socket.on(`conversation:${reduxData.chat_id}`, (newData) => {
-        console.log("unreadMsgNotify newData ",newData)
-  
+
         dispatch({
-          type: "message",
+          type: "messages",
           payload:newData,
         });
       });
@@ -49,7 +51,7 @@ function Chatarea() {
         console.log("message", res.data.chat_id);
         setMessages(res.data.messages);
         dispatch({
-          type: "message",
+          type: "messages",
           payload: res.data.messages,
         })
         dispatch({
@@ -86,7 +88,7 @@ function Chatarea() {
         setTypedMessage("")
         setMessages(res.data.messages);
         dispatch({
-          type: "message",
+          type: "messages",
           payload: res.data.messages,
         });
     
@@ -105,13 +107,7 @@ function Chatarea() {
           <div className=" h-16  rounded-xl items-center flex flex-col ">
             <div className="flex w-full bg-gray-100 rounded-t-xl  items-center px-1   h-5/6 ">
               <div className={`flex p-2 px-3 h-14   cursor-pointer`}>
-                {/* <div className=" w-[66px] flex justify-center  ">
-                  <img
-                    className="rounded-full object-cover"
-                    src="/images/profile1.jpg"
-                    alt=""
-                  />
-                </div> */}
+               
                  <div className="w-8 h-8 rounded-full bg-blue-300 flex justify-center items-center mt-1">
                       <div className="w-8 h-8 rounded-full  bg-blue-300 flex justify-center items-center tex-white">
                       {reduxData?.selectedChat?.name.split("")[0]}
@@ -126,10 +122,10 @@ function Chatarea() {
               </div>
             </div>
           </div>
-          <div className={`overflow-y-scroll px-4 h-[calc(100%-96px)]`}>
+          <div className={`overflow-y-scroll px-4 h-[calc(100%-98px)]`}>
             <div className="">
-              {messages?.length > 0 &&
-                messages.map((item, index) => (
+              {reduxData.messages?.length > 0 &&
+               reduxData.messages.map((item, index) => (
                   <div key={index}>
                     {item.user_id._id === reduxData?.user?._id ? (
                       <div className="text-[12px] text-gray-800 w-[100%] my-8 justify-between pr-[5%] flex">
@@ -171,9 +167,9 @@ function Chatarea() {
                               if (!isNaN(date)) {
                                 const utcTimeString = date.toISOString();
                                 const localTimeString = date.toLocaleString();
-                                return <p>{localTimeString}</p>; // Change this to {utcTimeString} if you want UTC time
+                                return <p>{localTimeString}</p>; 
                               } else {
-                                return null; // If date is not present or invalid, return null or any other fallback value
+                                return null; 
                               }
                             })()}
                           </div>
@@ -210,16 +206,7 @@ function Chatarea() {
                 ))}
             </div>
           </div>
-          <div className="h-[95px] w-[100%] flex flex-col items-center justify-between py-2 relative text-white">
-            <div className="w-[100%] flex items-center text-white">
-              <form
-                // onSubmit={chat_type === "bygroup" ? sendMsgToGroup : SendMessage}
-                className="w-[100%] px-4 duration-300 flex flex-col items-center text-black font-semibold text-[14px] absolute bottom-0 py-2"
-              >
-                {/* Add form elements here */}
-              </form>
-            </div>
-          </div>
+ 
           {/* write message */}
           <div className=" h-20 rounded-b-xl items-center mt-auto flex flex-col ">
             <div className="flex w-full bg-gray-100 rounded-b-xl  items-center px-1   h-5/6 mt-auto">

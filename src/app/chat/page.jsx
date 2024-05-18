@@ -8,9 +8,10 @@ import { BaseUrl } from '../../baseUrl';
 import axios from "axios";
 import { useRouter } from 'next/navigation'
 
+
 export default function Page() {
   const reduxData = useSelector((x) => x.data);
- 
+
   const dispatch=useDispatch()
   const router = useRouter()
 
@@ -47,12 +48,6 @@ export default function Page() {
 });
 
 },[])
-
-
-
-
-
-
 
   return (
     <>
