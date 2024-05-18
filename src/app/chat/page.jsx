@@ -4,13 +4,13 @@ import Navbar from "./navbar";
 import Contactlistarea from "./contactlistarea";
 import Chatarea from "./chatarea";
 import { useDispatch,useSelector} from "react-redux";
-import { BaseUrl } from '..//baseUrl';
+import { BaseUrl } from '../../baseUrl';
 import axios from "axios";
 import { useRouter } from 'next/navigation'
 
 export default function Page() {
   const reduxData = useSelector((x) => x.data);
-  console.log('reduxData',reduxData)
+ 
   const dispatch=useDispatch()
   const router = useRouter()
 
@@ -33,7 +33,7 @@ export default function Page() {
   })
   .then((res) => {
     if (res.status === 200) {
-      console.log('res user',res.data.data)
+    
        dispatch({
         type:"user",
         payload:res.data.data

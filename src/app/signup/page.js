@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import  VerificationCode from "./verificationCode";
-import { BaseUrl } from '@/baseUrl';
+import { BaseUrl } from '../../baseUrl';
 import axios from "axios";
 const Page = () => {
   
@@ -188,6 +188,9 @@ const Page = () => {
                 Sign Up
               </button>
             </form>
+            <div>
+        <a href="/signin" className="text-blue-400">Already an account</a>
+         </div>
           </div>
         </div>
       ) :(<VerificationCode setVerificationComp={setVerificationComp}/>)}

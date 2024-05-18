@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BaseUrl } from "../baseUrl";
+import { BaseUrl } from "../../baseUrl";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 const Page = () => {
@@ -100,6 +100,10 @@ const Page = () => {
          >
            Sign In
          </button>
+         <div>
+        <a href="/signup" className="text-blue-400">Create a new account</a>
+         </div>
+     
        </div>
      </div>
    </div>

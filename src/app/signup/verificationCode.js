@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react'
-import { BaseUrl } from '@/baseUrl';
+import { BaseUrl } from '../../baseUrl';
 import { useDispatch, useSelector } from "react-redux";
 
 import { useRouter } from 'next/navigation';

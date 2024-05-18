@@ -4,7 +4,8 @@ const initstate = {
   user:null,
   userList:null,
   message:null,
-  selecteduser:null
+  selectedChat:null,
+  chat_id:null
 
 };
 export default function Reducer(state = initstate, action) {
@@ -22,8 +23,11 @@ export default function Reducer(state = initstate, action) {
       return { ...state,message: action.payload };
    
    
-    case "selecteduser":
-      return { ...state,selecteduser: action.payload };
+    case "selectedChat":
+      return { ...state,selectedChat: action.payload };
+   
+    case "chat_id":
+      return { ...state,chat_id: action.payload };
    
    
 
