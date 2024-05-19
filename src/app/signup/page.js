@@ -10,11 +10,11 @@ const Page = () => {
   const dispatch = useDispatch();
   const reduxData = useSelector((x) => x);
   const [verificationComp, setVerificationComp] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    rePassword: "",
     country: "",
     city: "",
     age: "",
@@ -36,6 +36,16 @@ const Page = () => {
       ...formData,
       [name]: value,
     });
+
+
+    if (name === 'password') {
+      const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if (!passwordPattern.test(value)) {
+        setError('Password must be at least 8 characters long and include at least one letter and one number');
+      } else {
+        setError('');
+      }
+    }
   };
 
 
@@ -52,7 +62,7 @@ const Page = () => {
           .then((res) => {
             console.log(res);
             if (res.status === 200) {
-               alert("OTP Sent")
+               alert(res.data.message)
                setVerificationComp(true)
             }
         })
@@ -108,6 +118,7 @@ const Page = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+               
                 className="w-full mb-4 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               />
               <input
@@ -126,17 +137,10 @@ const Page = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                 className="w-full mb-4 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               />
-              <input
-                type="password"
-                name="rePassword"
-                placeholder="Re-enter Password"
-                value={formData.rePassword}
-                onChange={handleChange}
-                required
-                className="w-full mb-4 px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              />
+             {error && <p className="text-red-500">{error}</p>}
               <input
                 name="country"
                 placeholder="Country"
