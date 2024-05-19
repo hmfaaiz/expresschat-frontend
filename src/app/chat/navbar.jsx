@@ -61,12 +61,21 @@ const Navbar = () => {
           <Notification data={data} setNotification={setNotification} />
         </div>
       ) : null}
-      <nav className="flex justify-between p-3 px-4  items-center x-full border shadow-md bg-green-500">
+      <nav className="flex justify-between px-4  items-center x-full border shadow-md bg-green-500">
         <div className=" xl:block xl:w-1/3"></div>
+        <div className="xl:block xl:w-1/3  p-2">
+          <img
+            className="h-10 w-[80%] object-cover item-center"
+            src="/images/namelogo.png"
+            alt=""
+          />
+        </div>
 
         <div className=" w-1/3  xl:block ">
           <div className="flex justify-end items-center">
-            <div className="mr-5 text-white">{reduxData?.user?.profile_id?.name}</div>
+            <div className="mr-5 text-white">
+              {reduxData?.user?.profile_id?.name}
+            </div>
             <a
               onClick={() => Logout()}
               className="bg-white text-black rounded mr-2 py-2 px-3  cursor-pointer inline-block hover:bg-green-700 hover:text-white"

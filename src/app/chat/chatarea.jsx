@@ -12,7 +12,7 @@ function Chatarea() {
   const [messages, setMessages] = useState([]);
   const [typedMessage,setTypedMessage]=useState("")
   const { socket } = useSocket();
-
+console.log("reduxData",reduxData)
 
   useEffect(() => {
  
