@@ -128,9 +128,24 @@ function Chatarea() {
                reduxData.messages.map((item, index) => (
                   <div key={index}>
                     {item.user_id._id === reduxData?.user?._id ? (
-                      <div className="text-[12px] text-gray-800 w-[100%] my-8 justify-between pr-[5%] flex">
+                      <div className="text-[12px] text-gray-800 w-[100%] my-8 justify-between pr-[5%] flex  flex-col items-end">
                         <div className=" text-[12px] w-[20%]"></div>
+                        <div className="flex space-x-2 px-1">
+                            <p>{item.user_id.profile_id.name}</p>
+                            {(() => {
+                              const date = new Date(item.createdAt);
+                              if (!isNaN(date)) {
+                                const utcTimeString = date.toISOString();
+                                const localTimeString = date.toLocaleString();
+                                return <p>{localTimeString}</p>; 
+                              } else {
+                                return null; 
+                              }
+                            })()}
+                          </div>
                         <div className="text-[12px] text-gray-800 md:max-w-[80%] p-2 bg-blue-100 rounded-md px-5 flex flex-col items-end">
+                        
+                        
                           <p className="whitespace-pre text-[16px]">
                             {item.message?.includes("http://") ||
                             item.message?.includes("https://") ? (
