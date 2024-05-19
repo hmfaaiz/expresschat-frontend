@@ -105,17 +105,17 @@ function Chatarea() {
         <div className=" ml-3  rounded-xl bg-white w-3/4 flex flex-col ">
           {/* Header */}
           <div className=" h-16  rounded-xl items-center flex flex-col ">
-            <div className="flex w-full bg-gray-100 rounded-t-xl  items-center px-1   h-5/6 ">
+            <div className="flex w-full bg-green-500 rounded-t-xl  items-center px-1   h-5/6 ">
               <div className={`flex p-2 px-3 h-14   cursor-pointer`}>
                
-                 <div className="w-8 h-8 rounded-full bg-blue-300 flex justify-center items-center mt-1">
-                      <div className="w-8 h-8 rounded-full  bg-blue-300 flex justify-center items-center tex-white">
+                 <div className="w-8 h-8 rounded-full bg-white flex justify-center items-center mt-1">
+                      <div className="w-8 h-8 rounded-full  bg-white flex justify-center items-center tex-white">
                       {reduxData?.selectedChat?.name.split("")[0]}
                       {reduxData?.selectedChat?.name.split("")[1]}
                       </div>
                     </div>
                 <div className="w-full ml-1 p-2 ">
-                  <p className=" h-5 text-sm font-semibold">
+                  <p className=" h-5 text-sm font-semibold text-white">
                     {reduxData?.selectedChat?.name}
                   </p>
                 </div>

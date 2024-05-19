@@ -52,15 +52,15 @@ function Contactlistarea() {
     <>
       <div className="bg-white  w-1/3 rounded-xl overflow-hidden">
         {/* search */}
-        <div className="bg-white  h-12  items-center px-3 flex border-b">
-          <div className="flex w-full bg-gray-100  justify-between items-center px-1  rounded-md  h-3/4">
+        <div className="bg-green-500  h-12  items-center px-3 flex border-b text-white">
+          <div className="flex w-full bg-green-500  justify-between items-center px-1  rounded-md text-white h-3/4">
             <img
               src="/images/searchicon.svg"
               alt=""
               className="h-4 ml-2 mr-5"
             />
             <input
-              className="w-full  bg-gray-100 focus:outline-none "
+              className="w-full  bg-green-500 focus:outline-none text-white placeholder-white"
               placeholder="Search name..."
               value={searchName}
               onChange={(e) => Searching(e.target.value)}
